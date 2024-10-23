@@ -22,7 +22,7 @@
                   </td>
                   <td>
                     <a href="{% url 'edit' image.id %}" type="submit" class="btn btn-primary btn-sm">Edit</a>
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    <a href="{% url 'delete' image.id %}" type="submit" class="btn btn-danger btn-sm">Delete</a>
                   </td>
                 </tr>
               {% endfor %}

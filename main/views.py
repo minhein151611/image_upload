@@ -29,3 +29,11 @@ def edit(request,pk):
             return redirect('index')
     context = {'forms':forms}
     return render(request, 'edit.html', context)
+
+def delete(request,pk):
+    image = Image.objects.get(id=pk)
+    if request.method == "POST":
+        image.delete()
+        return redirect('index')
+    context = {'image':image}
+    return render(request, 'delete.html', context)
