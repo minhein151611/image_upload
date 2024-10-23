@@ -21,5 +21,11 @@ def create(request):
 
 def edit(request,pk):
     image = Image.objects.get(id=pk)
-    context = {'image':image}
+    forms=ImageForm(instance=image)
+    if request.method == "POST":
+        forms = ImageForm(request.POST, request.FILES, instance=image)
+        if forms.is_valid():
+            forms.save()
+            return redirect('index')
+    context = {'forms':forms}
     return render(request, 'edit.html', context)
